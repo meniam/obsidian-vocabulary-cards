@@ -7679,4 +7679,4 @@ function renderTable(source, el) {
 }
 
 module.exports = VocabularyView;
-//# sourceMappingURL=main.js.map
+
