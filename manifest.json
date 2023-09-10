@@ -1,0 +1,10 @@
+{
+	"id": "obsidian-vocabulary-cards",
+	"name": "Vocabulary Cards",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "An easy way to display vocabulary words as flashcards and as a list.",
+	"author": "Eugene Myazin",
+	"authorUrl": "https://www.facebook.com/emyazin",
+	"isDesktopOnly": false
+}

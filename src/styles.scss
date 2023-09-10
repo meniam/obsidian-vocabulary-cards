@@ -1,0 +1,198 @@
+.voca-table, .voca {
+    font-size: var(--editor-font-size);
+    width: 100%;
+
+    .markdown-rendered &_derivative,
+    &_derivative {
+        white-space: nowrap;
+        line-height: 1.2;
+    }
+
+    &_derivative-text {
+        display: inline-block;
+        font-weight: bold;
+    }
+
+    &_derivative-transcription {
+        display: inline-block;
+        margin-left: 0.6rem;
+        color: var(--color-base-60);
+
+        &-text {
+            font-size: 80%;
+            color: var(--color-base-60);
+        }
+
+        &-delimiter {
+            font-size: 80%;
+            color: var(--color-base-40);
+        }
+    }
+
+    &_explanation {
+        width: 100%;
+    }
+}
+
+//.voca {
+//  padding: 0.5em;
+//  display: block;
+//  box-shadow: 0 0.25em 0.625em var(--background-modifier-box-shadow);
+//  user-select: none;
+//  overflow-wrap: anywhere;
+//}
+
+.voca-error {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    @media (min-width: 600px) {
+        min-width: 28rem;
+    }
+    @media (max-width: 600px) {
+        width: 100%;
+    }
+
+    box-shadow: 0 0.25em 0.625em var(--background-modifier-box-shadow);
+    padding: var(--size-4-5) var(--size-4-5);
+    border: var(--table-border-width) solid var(--table-border-color);
+
+    &_header {
+        color: var(--text-error);
+        font-size: 110%;
+        margin-bottom: 1rem;
+    }
+
+    &_text {
+        font-size: 90%;
+        white-space: pre-wrap; /* Since CSS 2.1 */
+        white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+        white-space: -o-pre-wrap; /* Opera 7 */
+        word-wrap: break-word; /* Internet Explorer 5.5+ */
+    }
+}
+
+.voca-card {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    @media (min-width: 600px) {
+        min-width: 28rem;
+    }
+    @media (max-width: 600px) {
+        width: 100%;
+    }
+
+    box-shadow: 0 0.25em 0.625em var(--background-modifier-box-shadow);
+    padding: var(--size-4-5) var(--size-4-5);
+    border: var(--table-border-width) solid var(--table-border-color);
+
+    &_confetti {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+    }
+
+    &_stat-total {
+        line-height: 1;
+        position: absolute;
+        display: inline-block;
+        left: var(--size-4-2);
+        top: var(--size-4-2);
+        font-size: 80%;
+        color: var(--color-base-60);
+    }
+
+    &_stat {
+        position: absolute;
+        display: inline-block;
+        right: var(--size-4-2);
+        top: var(--size-4-2);
+        font-size: 80%;
+        line-height: 0.8;
+        //padding-right: var(--size-4-2);
+    }
+
+    &_stat-delimiter {
+        line-height: 1;
+        color: var(--color-base-40);
+        display: inline-block;
+        padding: 0 3px;
+    }
+
+    &_stat-right {
+        line-height: 1;
+        display: inline-block;
+        color: var(--background-modifier-success);
+        //padding: var(--size-4-2);
+    }
+
+    &_stat-wrong {
+        line-height: 1;
+        display: inline-block;
+        color: var(--background-modifier-error);
+    }
+
+    .voca-card-derivative {
+        display: block;
+        text-align: center;
+        font-size: 1.5em;
+        line-height: 1;
+        white-space: nowrap;
+        font-weight: 500;
+    }
+
+    .voca-card-ts {
+        display: block;
+        line-height: 1;
+        color: var(--color-base-60);
+        text-align: center;
+        margin-bottom: var(--size-4-5);
+    }
+
+
+    .voca-card-explanation, .voca-card-explanation-blurred {
+        display: block;
+        text-align: center;
+        font-size: 105%;
+        letter-spacing: normal;
+    }
+
+    .voca-card-explanation-blurred {
+        text-shadow: 0 0 18px var(--color-base-100);
+        color: transparent;
+    }
+
+    &_buttons {
+        margin-top: var(--size-4-5);
+        display: block;
+        color: #FFF;
+        text-align: center;
+
+        .voca-card_button-danger {
+            color: #FFF;
+            background-color: var(--background-modifier-error);
+            margin-right: 0.5em;
+            @media (max-width: 600px) {
+                width: 100%;
+                margin-bottom: 1em;
+                margin-right: 0;
+            }
+        }
+
+        .voca-card_button-success {
+            color: #FFF;
+            margin-left: 0.5em;
+            background-color: var(--background-modifier-success);
+
+            @media (max-width: 600px) {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+
+    }
+
+}
