@@ -1,6 +1,5 @@
 import {Plugin} from "obsidian";
 import {Card} from "./Card";
-import {CardList} from "./CardList";
 
 export class CardStat {
     plugin: Plugin;
@@ -10,28 +9,23 @@ export class CardStat {
     getStat: (card: Card) => any
     rightAnswer: (card: Card) => void;
     wrongAnswer: (card: Card) => void;
-    save: () => void;
+    loadStat: () => void;
+    saveStat: () => void;
 
     constructor(plugin: Plugin) {
         this.plugin = plugin;
         this.file = '.voca_stat.json';
         this.stat = {};
 
-        plugin.app.vault.adapter.exists(this.file).then((exists) => {
-            if (!exists) {
-                return;
-            }
-            plugin.app.vault.adapter.read(this.file).then((cont) => {
-                let stat;
-                try {
-                    stat = JSON.parse(cont)
-                } catch (e) {
-                    stat = {}
-                }
+        this.loadStat = async () => {
+            this.stat = Object.assign({}, await plugin.loadData());
+        }
 
-                this.stat = stat;
-            });
-        });
+        this.loadStat();
+
+        this.saveStat = async () => {
+            await plugin.saveData(this.stat);
+        }
 
         this.getStat = (card: Card): any => {
             if (this.stat[card.derivative] === undefined) {
@@ -51,7 +45,7 @@ export class CardStat {
                 this.stat[card.derivative].r++;
             }
             card.setWrong(this.stat[card.derivative].r);
-            this.save();
+            this.saveStat();
         }
 
         this.wrongAnswer = (card: Card) => {
@@ -65,19 +59,7 @@ export class CardStat {
             }
 
             card.setWrong(this.stat[card.derivative].w);
-            this.save();
-        }
-
-        this.save = () => {
-            if (!plugin.app.vault.adapter.exists(this.file)) {
-                plugin.app.vault.create(this.file, '{}').then();
-            }
-
-            try {
-                plugin.app.vault.adapter.write(this.file, JSON.stringify(this.stat)).then();
-            } catch (e) {
-                console.log(e);
-            }
+            this.saveStat();
         }
     }
 }

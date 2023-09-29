@@ -14,12 +14,15 @@ export default class VocabularyView extends Plugin {
         const cs = new CardStat(this)
 
         this.registerMarkdownCodeBlockProcessor("voca-table", (source, el) => {
+            console.log('register table');
             renderTable(source, el)
         });
 
         this.registerMarkdownCodeBlockProcessor("voca-card", (source, el) => {
             parseCardCodeBlock(cs, source, el)
         });
+        console.log('end');
+
     }
 }
 

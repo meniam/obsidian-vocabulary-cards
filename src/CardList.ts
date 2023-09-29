@@ -11,6 +11,36 @@ function shuffle(arr: number[]): any {
     }
 }
 
+function fixInputText(str: string): string {
+    let lines: string[] = str.split('\n');
+
+    let result: string[] = [];
+
+    lines.forEach((value, index) => {
+        let line = value.trim();
+
+        if (line.startsWith('-')) {
+            result.push(value);
+        }
+
+        if (!line.contains(': ')) {
+            if (line.match(/\s+-\s+/)) {
+                result.push(line.replace(/\s+-\s+/, ': '));
+            } else if (line.match(/\s+—\s+/)) {
+                result.push(line.replace(/\s+—\s+/, ': '));
+            } else {
+                result.push(value);
+            }
+        } else {
+            result.push(value);
+
+        }
+    })
+
+    return result.join("\n");
+}
+
+
 export class CardList {
     words: Card[] = [];
     length: number = 0;
@@ -30,7 +60,7 @@ export class CardList {
     }
 
     constructor(src: string) {
-        const data: any = YAML.parse(src);
+        const data: any = YAML.parse(fixInputText(src));
 
         for (let key in data) {
             // skip loop if the property is from prototype
