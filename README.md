@@ -51,7 +51,7 @@ There are 2 types of block available:
 
 ### Statistics
 
-There is file `.voca_stat.json` in the vault root (it is not visible in the application). 
+There is file `data.json` in the plugin folder. 
 The file contains statistics about correct answers. For reset statistics, delete the file.
 
 ### Example
